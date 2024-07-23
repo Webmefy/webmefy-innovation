@@ -1,0 +1,42 @@
+{% assign available = false %}
+{% for refer_product in product.metafields.custom.other_color_product.value %}
+  {% if refer_product.available %}
+    {% assign available = true %}
+  {% endif %}
+{% endfor %}
+{% if product.metafields.custom.other_color_product.value and available %}
+  <label class="form__label" for="Quantity-template--14825666936905__main">
+    {{ 'products.product.variant_color_label' | t }}
+  </label>
+{% endif %}
+<div style="display: flex;flex-wrap: wrap;">
+  {% for refer_product in product.metafields.custom.other_color_product.value %}
+    {% if refer_product.available %}
+      <div style="padding: 0px 20px 0px 0px">
+        <a href="{{ refer_product.url }}">
+          <div data-img="{{ refer_product.featured_image | image_url: width: 1946}}" class="container-img-variant">
+            {{ refer_product.featured_image | img_tag }}
+          </div>
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  var original_image = '';
+  var original_source_set = '';
+  $(function () {
+    original_image = $('.product__media').find('img').attr('src');
+    original_source_set = $('.product__media').find('img').attr('srcset');
+  });
+  $('.container-img-variant').on('mouseover', function () {
+    const img = this.dataset.img;
+    $('.product__media').find('img').attr('src', img);
+    $('.product__media').find('img').attr('srcset', '');
+  });
+  $('.container-img-variant').on('mouseleave', function () {
+    $('.product__media').find('img').attr('src', original_image);
+    $('.product__media').find('img').attr('srcset', original_source_set);
+  });
+</script>

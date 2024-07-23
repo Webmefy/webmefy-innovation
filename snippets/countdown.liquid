@@ -1,0 +1,293 @@
+<a {% if settings.link_button_cd %}href="{{ settings.link_button_cd }}"{% endif %} {% if settings.image_cd %} style="background:url('{{ settings.image_cd | img_url: 'x800'}}');background-size: 100% 100%;background-repeat: no-repeat;height: auto;" {% endif %} class="countdown-container">
+    {% comment %} <span class="title">{{ settings.title_countdown }}</span>
+    <div id="progressBar" style="background: {{ settings.color_countdown | color_modify: 'alpha', 0.45 }};">
+          <div class="countdown"></div>
+    </div> {% endcomment %}
+        <ul id="countdown">
+        <div class="container-text reference-text-t">
+          <span>{{ settings.Top_text_cd }}</span>
+        </div>
+        <div class="countdown-container-cd">
+          <li>
+            <p class="name">{{ 'countdown.days' | t }}</p>
+            <span id="day" class="numbers">00</span>
+          </li>
+          <span>:</span>
+          <li>
+            <p class="name">{{ 'countdown.hours' | t }}</p>
+            <span id="hour" class="numbers">00</span>
+          </li>
+          <span>:</span>
+          <li>
+            <p class="name">{{ 'countdown.minutes' | t }}</p>
+            <span id="minute" class="numbers">00</span>
+          </li>
+          <span>:</span>
+          <li>
+            <p class="name">{{ 'countdown.seconds' | t }}</p>
+            <span id="second" class="numbers">00</span>
+          </li>
+        </div>
+        <div class="container-text sec-element">
+          <span >
+          {{ settings.Bot_text_cd }}
+          {%- if settings.image_cd_icon -%}
+            <img src="{{ settings.image_cd_icon | image_url }}"/>
+          {%- endif -%}
+          </span>
+        </div>
+        </ul>
+</a>
+<style>
+  
+    :root {
+        --countdown-background: {{ settings.color_countdown }};
+        --countdown-text-color: {{ settings.color_countdown }};
+    }
+
+  .countdown-container {
+  width: 100%;
+  background: {{ settings.color_cd }};
+  display: block;
+}
+
+.countdown-container .title {
+  color: $countdown-text-color;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 17px;
+}
+
+#progressBar {
+  width: 100%;
+  margin: 10px auto;
+  height: 22px;
+  border-radius: 5px;
+}
+#progressBar div {
+  height: 100%;
+  text-align: right;
+  padding: 0;
+  line-height: 22px;
+  width: 0;
+  background-color: $countdown-background;
+  box-sizing: border-box;
+  overflow: visible;
+  border-radius: 5px;
+}
+  .top-distance {
+    top: 98px !important;
+  }
+  .footer-distance {
+    margin-top: 110px;
+  }
+  .f-element {
+   display:none; 
+  }
+  @media (max-width:767px) {
+  .sec-element {
+   display:none!important; 
+  }
+  .reference-text-t {
+    margin-top:-14px!important;
+  }
+  body #countdown {
+    height: 100px;
+    flex-direction: column;
+  }
+
+  body .countdown-container {
+    margin-top: 0px;
+  }
+  
+        body .container-click {
+          display: none !important;
+        }
+        }
+#countdown {
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-left: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 55px;
+    width: 80%;
+    margin: 0 auto;
+}
+.countdown-container-cd {
+  display: flex;
+  justify-content: center;
+  margin-right: 20px;
+}
+.countdown-container-cd span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+}
+#countdown li {
+  margin: 0 0.3em 0 0.3em;
+  width: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#countdown li:first-child {
+  margin-left: 8px;
+}
+
+#countdown .numbers {
+  font-size: 17px;
+  background: white;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  margin: 6px 0!important;
+  margin-top: 0px!important;
+  font-weight: 700;
+}
+
+#countdown .container-text {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  letter-spacing: 0;
+  margin-right: 20px;
+  justify-content: center;
+  font-size: 20px!important;
+  margin-top: 5px;
+}
+#countdown .container-text img {
+    height: 30px;
+    margin-top: 2px;
+    margin-left: -5px;
+}
+#countdown .button-countdown {
+  padding: 4px 10px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+#countdown .button-countdown {
+  color: white;
+}
+#countdown .name {
+  font-family: sans-serif;
+  font-size: 6px;
+  line-height: 1.5;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  color: white;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    let current_date = new Date();
+    let start_date = new Date();
+    start_date.setFullYear('{{ settings.start_countdown_year }}');
+    start_date.setMonth('{{ settings.start_countdown_month }}' - 1);
+    start_date.setDate('{{ settings.start_countdown_day }}');
+    start_date.setHours('{{ settings.start_countdown_hours }}');
+    start_date.setMinutes('{{ settings.start_countdown_minute }}');
+    let end_date = new Date('{{ settings.countdown_year }}','{{ settings.countdown_month }}' - 1 ,'{{ settings.countdown_day }}','{{ settings.countdown_hours }}','{{ settings.countdown_minute }}' );
+    console.log('start_date ' + start_date)
+    console.log('current_date ' + current_date)
+    console.log('end_date ' + end_date)
+    console.log(end_date < start_date)
+    console.log(end_date  < current_date)
+    console.log(start_date > current_date)
+    console.log( "time left" , Math.abs(end_date - current_date))
+    console.log( "Day " , Math.round(Math.abs(end_date - current_date) / 86400000))
+    if (end_date < start_date) {
+      $('.countdown-container').remove();
+      $('main').removeClass('top-distance')
+      $('footer').removeClass('footer-distance')
+      return;
+    }
+
+    if (end_date < current_date) {
+      $('.countdown-container').remove();
+      $('main').removeClass('top-distance')
+      $('footer').removeClass('footer-distance')
+      return;
+    }
+
+    if (start_date > current_date) {
+      $('.countdown-container').remove();
+      $('main').removeClass('top-distance')
+      $('footer').removeClass('footer-distance')
+      return;
+    }
+    const time_passed = Math.abs(current_date - start_date);
+    const time_left = Math.abs(end_date - current_date);
+    const time_total = Math.abs(end_date - start_date);
+
+    let day = Math.floor(time_left / 86400000) ;
+    let hour = Math.floor((time_left % 86400000) / 3600000) ;
+    let min = Math.floor(((time_left % 86400000) % 3600000) / 60000);
+    let sec = 59;
+
+    let day_passed = Math.round(time_passed / 86400000);
+    let hour_passed = Math.round((time_passed % 86400000) / 3600000);
+    let min_passed = Math.round(((time_passed % 86400000) % 3600000) / 60000);
+    let sec_passed = 59;
+
+    let day_end = Math.round(time_total / 86400000);
+    let hour_end = Math.round((time_total % 86400000) / 3600000);
+    let min_end = Math.round(((time_total % 86400000) % 3600000) / 60000);
+    let sec_end = 59;
+    console.log("day abajo " , day)
+    const date_diff = (day*86400) + (hour*3600) + (min*60) + (sec);
+    const date_passed = (day_passed * 86400) + (hour_passed * 3600) + (min_passed * 60) + (sec_passed);
+    const max_date = (day_end * 86400) + (hour_end * 3600) + (min_end * 60) + (sec_end);
+
+    console.log(date_diff + " date diff")
+    function progress(timepassed, timetotal, timeleft, $element) {
+      if (timeleft < 0) {
+        $('.countdown-container').remove();
+        $('main').removeClass('top-distance')
+        $('footer').removeClass('footer-distance')
+        return;
+      }else {
+        $('.countdown-container').css('display','block')
+      }
+      const current_progress_bar = (timetotal - timepassed);
+      const current_progress_bar_status = 100 - (current_progress_bar * 100 / timetotal);
+      let progressBarWidth = 300 * current_progress_bar_status / 100;
+      if (progressBarWidth > 300) {
+        progressBarWidth = 298;
+      }
+      let days = parseInt(timeleft / 86400);
+      let hoursLeft = parseInt(timeleft - days * 86400);
+      let hours = parseInt(hoursLeft / 3600);
+      let minutesLeft = parseInt(hoursLeft - hours * 3600);
+      let minutes = parseInt(minutesLeft / 60);
+      let seconds = parseInt(timeleft % 60);
+
+      $element
+        .find(".countdown")
+        .animate(
+          { width: progressBarWidth },
+          timeleft == timetotal ? 0 : 1000,
+          "linear"
+        );
+
+      if (timeleft > 0)
+        setTimeout(() => progress(timepassed, timetotal, timeleft - 1, $element), 1000);
+
+        document.getElementById("day").innerHTML =days;
+        document.getElementById("hour").innerHTML =hours;
+        document.getElementById("minute").innerHTML = minutes;
+        document.getElementById("second").innerHTML =seconds;
+    }
+    progress(date_passed, max_date, date_diff, $("#progressBar"));
+});
+</script>

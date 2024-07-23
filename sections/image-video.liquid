@@ -1,0 +1,80 @@
+<div class="container-video-image">
+  {% if section.settings.check_video_desktop %}
+    <video
+      poster="{{ section.settings.header_img_desktop | img_url: '300x300' }}"
+      {% if section.settings.controls %}controls{% endif %}
+      {% if section.settings.autoplay %}autoplay{% endif %}
+      {% if section.settings.check_mute %}muted{% endif %}>
+      <source src="{{ section.settings.video_upload_desktop }}" type="video/mp4">
+    </video>
+  {% endif %}
+</div>
+<style>
+   .container-video-image {
+    display: flex;
+    justify-content: center;
+   }
+  .image {
+    width: 100%;
+  }
+  .shopify-section video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Image or video",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "check_video_desktop",
+        "default": false,
+        "label": "Show video"
+      },
+      {
+        "type": "text",
+        "id": "video_upload_desktop",
+        "label": "Video",
+        "default": "https://cdn.shopify.com/videos/c/o/v/0e7c4adf04c444f8931c9f9b35b40921.mp4"
+      },
+      {
+        "type": "checkbox",
+        "id": "check_mute",
+        "default": false,
+        "label": "Mute video"
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "default": false,
+        "label": "Autoplay"
+      }, 
+      {
+        "type": "checkbox",
+        "id": "controls",
+        "default": false,
+        "label": "Controls"
+      }, 
+      {
+        "type": "checkbox",
+        "id": "check_img_desktop",
+        "default": false,
+        "label": "Show image"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "header_img_desktop",
+        "label": "Image"
+      }
+    ],
+    "blocks": [],
+    "presets": [
+      {
+        "name": "Image or video",
+        "category": "Image or video"
+      }
+    ]
+  }
+{% endschema %}

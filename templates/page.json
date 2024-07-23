@@ -1,0 +1,98 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "b54fafcb-6cfe-4667-952c-796a9f9c30eb": {
+      "type": "image-banner",
+      "blocks": {
+        "template--17086669095212__b54fafcb-6cfe-4667-952c-796a9f9c30eb-1670840905e0e16981-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "template--17086669095212__b54fafcb-6cfe-4667-952c-796a9f9c30eb-1670840905e0e16981-1": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "template--17086669095212__b54fafcb-6cfe-4667-952c-796a9f9c30eb-1670840905e0e16981-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17086669095212__b54fafcb-6cfe-4667-952c-796a9f9c30eb-1670840905e0e16981-0",
+        "template--17086669095212__b54fafcb-6cfe-4667-952c-796a9f9c30eb-1670840905e0e16981-1",
+        "template--17086669095212__b54fafcb-6cfe-4667-952c-796a9f9c30eb-1670840905e0e16981-2"
+      ],
+      "settings": {
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "e996e7ef-8b5b-4424-a441-d3d7e65c2c6b": {
+      "type": "subscription",
+      "blocks": {
+        "6c000356-23da-4693-afe7-b2a8348929d8": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_label_mobile": "Button label mobile"
+          }
+        }
+      },
+      "block_order": [
+        "6c000356-23da-4693-afe7-b2a8348929d8"
+      ],
+      "settings": {
+        "klaviyo_list_id": "",
+        "klaviyo_id": "",
+        "source": "",
+        "title_text": "",
+        "check_video_desktop": true,
+        "videofile-desktop": "https:\/\/cdn.shopify.com\/s\/files\/1\/2018\/8867\/files\/ice.mp4",
+        "check_img_desktop": false,
+        "check_video_mobile": false,
+        "videofile": "https:\/\/cdn.shopify.com\/s\/files\/1\/2018\/8867\/files\/ice.mp4",
+        "check_img_mobile": false,
+        "height": "use_screen_two_thirds",
+        "check_video_desktop_icons": false,
+        "videofile-desktop_icons": "https:\/\/cdn.shopify.com\/s\/files\/1\/2018\/8867\/files\/ice.mp4",
+        "check_img_desktop_icons": false,
+        "check_video_mobile_icons": false,
+        "videofile_icons": "https:\/\/cdn.shopify.com\/s\/files\/1\/2018\/8867\/files\/ice.mp4",
+        "check_img_mobile_icons": false,
+        "height_icons": "use_screen_two_thirds"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "b54fafcb-6cfe-4667-952c-796a9f9c30eb",
+    "e996e7ef-8b5b-4424-a441-d3d7e65c2c6b"
+  ]
+}
