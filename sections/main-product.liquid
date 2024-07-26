@@ -631,22 +631,21 @@
                     novalidate: 'novalidate',
                     data-type: 'add-to-cart-form'
                   -%}
+                    {% if product.metafields.custom.shared_sku %}
+                      <input
+                        id="shared_sku-{{ product.selected_or_first_available_variant.id }}"
+                        type="hidden"
+                        name="properties[_shared_sku]"
+                        value="{{ product.metafields.custom.shared_sku }}"
+                        hidden
+                      >
+                    {% endif %}
                     <input
                       type="hidden"
                       name="id"
                       value="{{ product.selected_or_first_available_variant.id }}"
                       disabled
                     >
-                    {% if product.metafields.custom.shared_sku %}
-                      <input
-                        type="hidden"
-                        name="properties[shared_sku]"
-                        value="{{ product.metafields.custom.shared_sku }}"
-                        hidden
-                        disabled
-
-                      >
-                    {% endif %}
                     <div class="product-form__buttons">
                       <button
                         type="submit"
